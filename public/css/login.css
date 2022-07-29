@@ -35,10 +35,6 @@ body * {
  p{
     color: white;
  }
-.left-login > h1 {
-    font-size: 3vw;
-    color: #77ffc0;
-}
 
 .image-anima-login-left{
   width: 35vw;
