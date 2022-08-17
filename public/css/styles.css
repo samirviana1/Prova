@@ -6,7 +6,10 @@
     --alerta-color:#d33220;
     --sucesso-color:#2ecc71;
     --button-color: #007dc6;
+    --text-field:#f0ffffde;
+    --login-secundary:#00ff88;
     --box-shadow-padrao: 0px 10px 40px #00000056;
+    --button-login:#2b134b;
 }
 
 *{
