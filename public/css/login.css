@@ -130,6 +130,7 @@ body * {
     }
     .image-anima-login-left{
         width: 50vw;
+        margin-bottom: 10px;
     }
 
 }

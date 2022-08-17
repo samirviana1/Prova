@@ -1,21 +1,36 @@
-const form = document.getElementById("form");
-const nomeUsuario = document.getElementById("nomeUsuario");
-const senha = document.getElementById("senha");
-const confirmaSenha = document.getElementById("confirmaSenha");
 
+// capturar variaveis dos inputs e do form htmls
+let form = document.getElementById("form");
+let nomeUsuario = document.getElementById("nomeUsuario");
+let senha = document.getElementById("senha");
+let confirmaSenha = document.getElementById("confirmaSenha");
+// não entendi muito isso, fiz pelo do jamerson, por que tava dando erro 
+
+// botão submit do form cadastro e chamar função check imputs
 form.addEventListener("submit", (evento) => {
   evento.preventDefault();
   checkImputs();
 });
 
+
+// logica para check imputs
 function checkImputs() {
+  let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
   const nomeUsuarioValor = nomeUsuario.value;
   const senhaValor = senha.value;
   const confirmaSenhaValor = confirmaSenha.value;
 
+  const verificaNomeUserIgual = usuarios.some(
+    (user) => user.nome === nomeUsuarioValor   
+    );
+    console.log(verificaNomeUserIgual);
+
   if (nomeUsuarioValor === "") {
     setErrorFor(nomeUsuario, " O campo usuario é obrigatório.");
-  } else {
+  } else if(verificaNomeUserIgual){
+    console.log(verificaNomeUserIgual);
+    return setErrorFor(nomeUsuario, "E-mail já está cadastrado!.")
+  }else {
     setSucessoFor(nomeUsuario);
   }
 
@@ -28,25 +43,42 @@ function checkImputs() {
   }
 
   if (confirmaSenhaValor === "") {
-    setErrorFor(confirmaSenha, " Confirmar senha é obrigatório.");
+    return setErrorFor(confirmaSenha, " Confirmar senha é obrigatório.");
+
   } else if (confirmaSenhaValor !== senhaValor) {
-    setErrorFor(confirmaSenha, "As senhas não conferem.");
+    return setErrorFor(confirmaSenha, "As senhas não conferem.");
   } else if (confirmaSenhaValor.length < 8) {
-    setErrorFor(confirmaSenha, "A senha precisa ter no mínimo 8 caracteres.");
+    return setErrorFor(confirmaSenha, "A senha precisa ter no mínimo 8 caracteres.");
   } else {
     setSucessoFor(confirmaSenha);
   }
 
+
+  usuarios.push(
+    {
+      nome:nomeUsuarioValor,
+      senha:senhaValor,
+      menssagens:[],
+    }
+   )
+   
   const formControls = form.querySelectorAll(".form-control");
-  const formValido = [...formControls].every((formControl) => {
+  const cadastroValido = [...formControls].every((formControl) => {
     return formControl.className === "form-control sucesso";
   });
-
-  if (formValido) {
-    console.log("sucesso!.");
+  
+  if (cadastroValido) {
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
   }
+  resetCadastro();
 }
 
+function resetCadastro() {
+  nomeUsuario.value ="";
+  senha.value="";
+  confirmaSenha.value="";
+}
+// erro e sucesso css com js
 function setErrorFor(input, message) {
   const formControl = input.parentElement;
   const small = formControl.querySelector("small");
