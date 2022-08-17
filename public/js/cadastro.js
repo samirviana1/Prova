@@ -4,7 +4,6 @@ let form = document.getElementById("form");
 let nomeUsuario = document.getElementById("nomeUsuario");
 let senha = document.getElementById("senha");
 let confirmaSenha = document.getElementById("confirmaSenha");
-// não entendi muito isso, fiz pelo do jamerson, por que tava dando erro 
 
 // botão submit do form cadastro e chamar função check imputs
 form.addEventListener("submit", (evento) => {
