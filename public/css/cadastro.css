@@ -1,8 +1,10 @@
-
+body *{
+    box-sizing: border-box;
+}
 .main{
     width: 100vw;
     height: 100vh;
-    background: #201b2c; 
+    background: var(--background-color); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,6 +37,7 @@
     background-color: #C4CAD0;
     box-sizing: border-box;
     box-shadow: var(--box-shadow-padrao);
+    flex-direction: column;
 }
 
 .header{
@@ -64,7 +67,7 @@
     display: block;
     border-radius: 10px;
     font-size: 14px;
-    width: 95%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -91,11 +94,38 @@
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
-    transition:  0,3s linear;
+    transition:  0,5s linear;
 }
 
 .form button:hover{
-    opacity:  0.85;
+    opacity:  0.9;
+}
+
+@media only screen and (max-width: 950px){
+    .conteiner{
+        width: 85%;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .main{
+        flex-direction: column;
+    }
+
+    .left-cadastro{
+        width: 100%;
+        height: auto;
+    }
+    .rigth-cadastro{
+        width: 100%;
+        height: auto;
+    }
+    .anime-cadastro{
+        width: 50vw;
+        margin-bottom: 10px;
+    }
+
 }
 
 /* erro e sucesso */

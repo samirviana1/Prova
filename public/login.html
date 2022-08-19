@@ -13,25 +13,39 @@
 <body>
     <div class="main-login">
         <div class="left-login">
-            <!--<h1>ENTRA NO SISTEMA DE RECADOS </h1> -->
             <img src="assets/login.svg"  class="image-anima-login-left" srcset="">
         </div>
         <div class="rigth-login">
             <div class="card-login">
-                <h1>ENTRA NO SISTEMA DE RECADOS</h1>
+                <div class="header">
+                    <h2>SISTEMA DE MENSSAGENS</h2>
+                </div>
+                <div id="tratarErro">
+                    
+                </div>
+                <div id="login" class="loginBloco">
                 <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" nome="usuario" placeholder="Usuário">
+                    <label id="usuarioLoginLabel" for="usuario">Usuário</label>
+                    <input type="text" id="usuarioLogin" nome="usuario" placeholder="E-mail">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fas fa-check-circle"></i>
+                    <small>Mensagem de erro</small>
                 </div>
                 <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" nome="senha" placeholder="Senha" >
+                    <label id="senhaLoginLabel" for="senha">Senha</label>
+                    <input type="password" id="senhaLogin" nome="senha" placeholder="Senha" >
+                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fas fa-check-circle"></i>
+                    <small>Mensagem de erro</small>
                 </div>
-                <button class="btn-login">Login</button>
+                <button class="btn-login" onclick="logar()">Login</button>
                 <p> Clique aqui para fazer seu cadastro - <a href="cadastro.html" class="cadastro-link" >Cadastre-se</a></p>
+               </div>
             </div>
         </div>
     </div>
+    <script src="js/login.js"></script>
+    <script src="https://kit.fontawesome.com/5b215096e7.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

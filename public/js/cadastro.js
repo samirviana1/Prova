@@ -1,4 +1,3 @@
-
 // capturar variaveis dos inputs e do form htmls
 let form = document.getElementById("form");
 let nomeUsuario = document.getElementById("nomeUsuario");
@@ -11,25 +10,25 @@ form.addEventListener("submit", (evento) => {
   checkImputs();
 });
 
-
 // logica para check imputs
 function checkImputs() {
-  let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  //pegar usuarios do localstores se não tiver pegar arry vazio.
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  //captuar valores dos inputs e colocar em uma const
   const nomeUsuarioValor = nomeUsuario.value;
   const senhaValor = senha.value;
   const confirmaSenhaValor = confirmaSenha.value;
-
+  //verificar no localstore se a email igual
   const verificaNomeUserIgual = usuarios.some(
-    (user) => user.nome === nomeUsuarioValor   
-    );
-    console.log(verificaNomeUserIgual);
-
+    (user) => user.nome === nomeUsuarioValor
+  );
+  console.log(verificaNomeUserIgual);
+  // verificaçoes de erro e sucesso
   if (nomeUsuarioValor === "") {
     setErrorFor(nomeUsuario, " O campo usuario é obrigatório.");
-  } else if(verificaNomeUserIgual){
-    console.log(verificaNomeUserIgual);
-    return setErrorFor(nomeUsuario, "E-mail já está cadastrado!.")
-  }else {
+  } else if (verificaNomeUserIgual) {
+    return setErrorFor(nomeUsuario, "E-mail já está cadastrado!.");
+  } else {
     setSucessoFor(nomeUsuario);
   }
 
@@ -43,39 +42,40 @@ function checkImputs() {
 
   if (confirmaSenhaValor === "") {
     return setErrorFor(confirmaSenha, " Confirmar senha é obrigatório.");
-
   } else if (confirmaSenhaValor !== senhaValor) {
     return setErrorFor(confirmaSenha, "As senhas não conferem.");
   } else if (confirmaSenhaValor.length < 8) {
-    return setErrorFor(confirmaSenha, "A senha precisa ter no mínimo 8 caracteres.");
+    return setErrorFor(
+      confirmaSenha,
+      "A senha precisa ter no mínimo 8 caracteres."
+    );
   } else {
     setSucessoFor(confirmaSenha);
   }
 
-
-  usuarios.push(
-    {
-      nome:nomeUsuarioValor,
-      senha:senhaValor,
-      menssagens:[],
-    }
-   )
-   
+  // criar o usuario no localstore
+  usuarios.push({
+    nome: nomeUsuarioValor,
+    senha: senhaValor,
+    mensagens: [],
+  });
+  //colocar a class do css no html de sucesso
   const formControls = form.querySelectorAll(".form-control");
   const cadastroValido = [...formControls].every((formControl) => {
     return formControl.className === "form-control sucesso";
   });
-  
+  // testar se todos os campos inputs tiver a class sucesso no o usuario e valido.
   if (cadastroValido) {
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    //puxa usuarios para localstore
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
   }
   resetCadastro();
 }
-
+// zerar campos depois de cadastrar
 function resetCadastro() {
-  nomeUsuario.value ="";
-  senha.value="";
-  confirmaSenha.value="";
+  nomeUsuario.value = "";
+  senha.value = "";
+  confirmaSenha.value = "";
 }
 // erro e sucesso css com js
 function setErrorFor(input, message) {
