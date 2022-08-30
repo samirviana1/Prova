@@ -1,4 +1,4 @@
-// capturar variaveis dos inputs e do form htmls
+//capturar variaveis dos inputs e do form htmls
 let form = document.getElementById("form");
 let nomeUsuario = document.getElementById("nomeUsuario");
 let senha = document.getElementById("senha");
@@ -68,9 +68,17 @@ function checkImputs() {
   if (cadastroValido) {
     //puxa usuarios para localstore
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    sucessos.setAttribute('style', 'display:block')
+    sucessos.innerHTML = "Cadastro realizado com sucesso!"
+    setTimeout(() => {
+      window.location.href = 'login.html'
+    }, 2000);
+    
   }
   resetCadastro();
 }
+
+
 // zerar campos depois de cadastrar
 function resetCadastro() {
   nomeUsuario.value = "";
@@ -89,3 +97,5 @@ function setSucessoFor(input) {
   const formControl = input.parentElement;
   formControl.className = "form-control sucesso";
 }
+
+

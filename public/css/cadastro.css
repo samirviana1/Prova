@@ -63,7 +63,7 @@ body *{
 }
 
 .form-control input {
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--primary-mens-wthite);
     display: block;
     border-radius: 10px;
     font-size: 14px;
@@ -88,7 +88,7 @@ body *{
 .form button {
     background-color: var(--button-color);
     border: 2px solid var(--button-color);
-    color: #fff;
+    color: var(--secundary-mens-white);
     font-size: 14px;
     width: 100%;
     border-radius: 10px;
@@ -101,6 +101,19 @@ body *{
     opacity:  0.9;
 }
 
+
+
+.voltar-link {
+    color: #007dc6;
+    
+ }
+  p{
+    text-align: center;
+    margin: 8px;
+    color: white;
+  }
+
+  /* responsividade basica cadastro */
 @media only screen and (max-width: 950px){
     .conteiner{
         width: 85%;
@@ -126,28 +139,4 @@ body *{
         margin-bottom: 10px;
     }
 
-}
-
-/* erro e sucesso */
-.form-control.sucesso input{
-    border-color: var(--sucesso-color);
-}
-
-.form-control.erro input{
-    border-color: var(--alerta-color);
-}
-
-.form-control.sucesso i.fa-check-circle{
-    color: var(--sucesso-color);
-    visibility: visible;
-}
-
-.form-control.erro i.fa-exclamation-circle{
-    color: var(--alerta-color);
-    visibility: visible;
-}
-
-.form-control.erro small{
-    visibility: visible;
-    color: var(--alerta-color);
 }

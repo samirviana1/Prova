@@ -50,14 +50,7 @@ body * {
     flex-direction: column;
 }
 
- #tratarErro{
-    text-align: center;
-    color: black;
-    background-color:var(--alerta-color);
-    padding: 10px;
-    border-radius: 4px;
-    display: none;
-}
+ 
 .loginBloco{
     padding: 20px;
 }
@@ -75,7 +68,7 @@ body * {
 }
 
 .textfield > input{
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--primary-mens-wthite);
     display: block;
     border-radius: 10px;
     font-size: 14px;
@@ -108,7 +101,7 @@ body * {
     border: 2px solid var(--button-color);
     border-radius: 8px;
     letter-spacing: 3px;
-    color:#fff;
+    color:var(--secundary-mens-white);
     background-color: var(--button-color);
     cursor: pointer;
     transition:  0,6s linear;
@@ -139,6 +132,8 @@ body * {
     visibility: visible;
     color: var(--alerta-color);
 }
+
+/* responsividade basica login */
 
 @media only screen and (max-width: 950px){
     .card-login{
