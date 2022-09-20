@@ -66,6 +66,7 @@ function logar() {
 // erro e sucesso css com js
 function setErrorFor(input, message) {
   const textfield = input.parentElement;
+  console.log(textfield);
   const small = textfield.querySelector("small");
   small.innerText = message;
   textfield.className = "textfield erro";
@@ -73,6 +74,7 @@ function setErrorFor(input, message) {
     small.innerText = "";
     textfield.className = "textfield";
   }, 1000);
+  
 }
 
 function setSucessoFor(input) {
